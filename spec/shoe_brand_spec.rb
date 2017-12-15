@@ -1,6 +1,12 @@
 require('spec_helper')
 
 describe(ShoeBrand) do
+
+  it("validates presence of name") do
+    shoe_brand = ShoeBrand.new({:name => ""})
+    expect(shoe_brand.save()).to(eq(false))
+  end
+
   it("has many shoe stores") do
     shoe_store1 = ShoeStore.create({:name => "Downtown Shoes"})
     shoe_store2 = ShoeStore.create({:name => "Ballard Store"})
