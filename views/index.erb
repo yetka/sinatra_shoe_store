@@ -1,0 +1,32 @@
+<h1 class="jumbotron">Shoe Store</h1>
+
+<h3>You can add new Store or new Brand in this section:</h3>
+<p><a href="/brand_form">Click here to add new Brand</a></p>
+<p><a href="/store_form">Click here to add new Store</a></p>
+
+<!-- <div class="project-list">
+<h3><a href="/lists">Click here to see projects list</a></h3>
+</div> -->
+
+<h3>You can update Store or Brand in this section:</h3>
+<% if @stores.any?() %>
+<h3>Update/Delete Store:</h3>
+<ul>
+  <% @stores.each do |store| %>
+  <li><a href="/stores/<%= store.id() %>"><%= store.store_name() %></a></li>
+  <% end %>
+</ul>
+<% else %>
+<p>There are no stores yet!</p>
+<% end %>
+<br>
+<% if @brands.any?() %>
+<h3>Update/Delete Brand:</h3>
+<ul>
+  <% @brands.each do |brand| %>
+  <li><a href="/brands/<%= brand.id() %>"><%= brand.brand_name() %></a></li>
+  <% end %>
+</ul>
+<% else %>
+<p>There are no brands yet!</p>
+<% end %>

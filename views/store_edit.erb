@@ -1,0 +1,23 @@
+<h2>Update <%=@store.store_name%> </h2>
+<form action="/stores/<%= @store.id() %>/edit" method="post">
+  <div class="form-group">
+    <label class="form-label" for='store_name'>Assign a new name to Store:</label>
+    <input class="form-control" id='store_name' name='store_name' type="text">
+    <input type="hidden" name="_method" value="patch">
+    <br>
+    <br>
+    <h3>Add Brands again:</h3>
+    <% @brands.each do |brand| %>
+      <div class="checkbox">
+        <label for="add_brands">
+          <input type="checkbox" name="brand_ids[]" value="<%= brand.id %>"><%= brand.brand_name %><br>
+        </label>
+      </div>
+    <% end %>
+    <button type="submit" class="button btn"><strong>Update Store</strong></button>
+  </div>
+</form>
+<form action="/stores/<%= @store.id() %>/edit" method="post">
+    <input name="_method" type="hidden" value="delete">
+    <button type="submit">Delete Store</button>
+  </form>
