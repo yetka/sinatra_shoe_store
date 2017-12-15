@@ -7,6 +7,11 @@ describe(ShoeStore) do
     expect(shoe_store.save()).to(eq(false))
   end
 
+  it("ensures the length of name is at most 100 characters") do
+    shoe_store = ShoeStore.new({:name => "a".*(101)})
+    expect(shoe_store.save()).to(eq(false))
+  end
+
   it("has many shoe brands") do
     shoe_brand1 = ShoeBrand.create({:name => "Reebok", :price => "50"})
     shoe_brand2 = ShoeBrand.create({:name => "NB",:price => "75"})
