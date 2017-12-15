@@ -12,6 +12,11 @@ describe(ShoeBrand) do
     expect(shoe_brand.save()).to(eq(false))
   end
 
+  it("converts the brand name to uppercase") do
+    shoe_brand = ShoeBrand.create({:brand_name => "Nike"})
+    expect(shoe_brand.brand_name()).to(eq("NIKE"))
+  end
+
   it("has many shoe stores") do
     shoe_store1 = ShoeStore.create({:store_name => "Downtown Shoes"})
     shoe_store2 = ShoeStore.create({:store_name => "Ballard Store"})
