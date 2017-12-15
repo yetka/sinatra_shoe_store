@@ -12,12 +12,11 @@ describe(ShoeStore) do
     expect(shoe_store.save()).to(eq(false))
   end
 
-  it("ensures the store name is unique") do
-    shoe_store1 = ShoeStore.new({:store_name => "Downtown Shoes"})
-    shoe_store1.save()
-    shoe_store2 = ShoeStore.new({:store_name => "Downtown Shoes"})
-    expect(shoe_store2.save()).to(eq(false))
+  it("has many shoe brands") do
+    shoe_brand1 = ShoeBrand.create({:brand_name => "Reebok", :brand_price => "50"})
+    shoe_brand2 = ShoeBrand.create({:brand_name => "Adidas",:brand_price => "75"})
+    shoe_store = ShoeStore.create({:store_name => "Downtown Shoes", :shoe_brand_ids => [shoe_brand1.id, shoe_brand2.id]})
+    expect(shoe_store.shoe_brands).to(eq([shoe_brand1, shoe_brand2]))
   end
-
 
 end
