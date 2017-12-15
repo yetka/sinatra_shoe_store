@@ -23,14 +23,14 @@ ActiveRecord::Schema.define(version: 20171215180424) do
   end
 
   create_table "shoe_brands", force: :cascade do |t|
-    t.string "name"
-    t.string "price"
+    t.string "brand_name"
+    t.string "brand_price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "shoe_stores", force: :cascade do |t|
-    t.string "name"
+    t.string "store_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
