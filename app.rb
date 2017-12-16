@@ -58,6 +58,15 @@ delete('/stores/:id/edit') do
   erb(:index)
 end
 
+patch('/stores/:id/edit') do
+  @store = ShoeStore.find(params[:id].to_i)
+  store_name = params[:store_name]
+  brand_ids = params[:brand_ids]
+  @store.update({:store_name => store_name, :shoe_brand_ids => brand_ids})
+  @brands = ShoeBrand.all()
+  @stores = ShoeStore.all()
+  erb(:index)
+end
 
 get('/brands/:id') do
   @brand = ShoeBrand.find(params[:id].to_i)
@@ -67,6 +76,16 @@ end
 delete('/brands/:id/edit') do
   @brand = ShoeBrand.find(params.fetch("id").to_i())
   @brand.delete()
+  @brands = ShoeBrand.all()
+  @stores = ShoeStore.all()
+  erb(:index)
+end
+
+post('/brands/:id/edit') do
+  name = params.fetch("brand_name")
+  price = params.fetch("brand_price")
+  @brand = ShoeBrand.find(params.fetch("id").to_i())
+  @brand.update({:brand_name => name, :brand_price => price})
   @brands = ShoeBrand.all()
   @stores = ShoeStore.all()
   erb(:index)
