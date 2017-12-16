@@ -44,8 +44,30 @@ patch("/store_form") do
   end
 end
 
-# get('/stores/:id') do
-#   @store = ShoeStore.find(params[:id].to_i)
-#   @brands = ShoeBrand.all()
-#   erb(:store_edit)
-# end
+get('/stores/:id') do
+  @store = ShoeStore.find(params[:id].to_i)
+  @brands = ShoeBrand.all()
+  erb(:store_edit)
+end
+
+delete('/stores/:id/edit') do
+  @store = ShoeStore.find(params.fetch("id").to_i())
+  @store.delete()
+  @stores = ShoeStore.all()
+  @brands = ShoeBrand.all()
+  erb(:index)
+end
+
+
+get('/brands/:id') do
+  @brand = ShoeBrand.find(params[:id].to_i)
+  erb(:brand_edit)
+end
+
+delete('/brands/:id/edit') do
+  @brand = ShoeBrand.find(params.fetch("id").to_i())
+  @brand.delete()
+  @brands = ShoeBrand.all()
+  @stores = ShoeStore.all()
+  erb(:index)
+end

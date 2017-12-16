@@ -1,0 +1,14 @@
+<h2>Update <%=@brand.brand_name%> </h2>
+<form action="/brands/<%= @brand.id() %>/edit" method="post">
+  <div class="form-group">
+    <label class="form-label" for='brand_name'>Assign a new name to Brand:</label>
+    <input class="form-control" id='brand_name' name='brand_name' type="text">
+    <label class="form-label" for='brand_price'>Assign a new price to Brand:</label>
+    <input class="form-control" id='brand_price' name='brand_price' type="text">
+    <button type="submit" class="button btn">Update Brand</button>
+  </div>
+</form>
+<form action="/brands/<%= @brand.id() %>/edit" method="post">
+  <input name="_method" type="hidden" value="delete">
+  <button type="submit">Delete Brand</button>
+</form>
