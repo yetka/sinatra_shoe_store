@@ -1,0 +1,11 @@
+<h3>You can click on the Store see all Brands that are sold there</h3>
+<% if @stores.any?() %>
+<ul>
+  <% @stores.each do |store| %>
+  <li><a href="/stores_brands/<%= store.id() %>"><%= store.store_name() %></a></li>
+  <% end %>
+</ul>
+<% else %>
+<p>There are no stores yet!</p>
+<% end %>
+<br>

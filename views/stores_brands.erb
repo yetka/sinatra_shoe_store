@@ -1,0 +1,13 @@
+<h2 class="jumbotron"><%=@store.store_name%> </h2>
+
+
+<% if @store.shoe_brands.any? %>
+  <p>Here are all the Brands available in this Store</p>
+  <ul>
+    <% @store.shoe_brands.each do |brand| %>
+      <li><%= brand["brand_name"] %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>There are no brands yet</p>
+<% end %>

@@ -90,3 +90,13 @@ post('/brands/:id/edit') do
   @stores = ShoeStore.all()
   erb(:index)
 end
+
+get ('/stores_list') do
+  @stores = ShoeStore.all()
+  erb(:stores_list)
+end
+
+get '/stores_brands/:id' do
+  @store = ShoeStore.find(params.fetch("id").to_i())
+  erb(:stores_brands)
+end
