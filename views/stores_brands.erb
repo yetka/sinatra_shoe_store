@@ -5,7 +5,7 @@
   <p>Here are all the Brands available in this Store</p>
   <ul>
     <% @store.shoe_brands.each do |brand| %>
-      <li><%= brand["brand_name"] %></li>
+      <li><%= brand["brand_name"] %> ,price: <%= brand["brand_price"] %></li>
     <% end %>
   </ul>
 <% else %>
