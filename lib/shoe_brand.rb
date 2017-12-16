@@ -1,5 +1,5 @@
 class ShoeBrand < ActiveRecord::Base
-  validates(:brand_name, {:presence => true, :length => { :maximum => 100 }})
+  validates(:brand_name, {:presence => true, :uniqueness => true, :length => { :maximum => 100 }})
   before_save(:upcase_brand_name)
   before_save(:brand_price_with_symbol)
   has_many :brand_stores
